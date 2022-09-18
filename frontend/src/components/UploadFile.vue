@@ -24,7 +24,7 @@
             onUpload(){
                 const fd = new FormData();
                 fd.append('file',this.selectedFile)
-                fd.append('name','hello')
+                fd.append('filetype','equities')
                 axios.post("http://localhost:8000/csv",fd)
                 .then(res=>{
                     console.log(res);
