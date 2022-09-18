@@ -1,5 +1,7 @@
 <template>
-  <UploadFile></UploadFile>
+  <UploadFile filetype="equities"></UploadFile>
+  <br>
+  <UploadFile filetype="returns"></UploadFile>
 </template>
 
 <script>
