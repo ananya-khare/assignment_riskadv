@@ -28,7 +28,7 @@ def get_csv_file(request):
             reader = csv.DictReader(file)
             for row in reader:
                 if not Equity.objects.filter(equity_id=row['equity_id']).first():
-                    
+
                     continue
                 if returns.objects.filter(equity=Equity.objects.filter(equity_id=row['equity_id']).first(),date=datetime.datetime.strptime(row['date'],'%Y-%m-%d')).first():
                     continue
@@ -42,10 +42,13 @@ def get_csv_file(request):
                 returns_obj.save()
                 print('Saved')
             return HttpResponse("Added Returns")
-
-                    
-
-
-        return HttpResponse('200')
     if request.method == "GET":
         return HttpResponse("Only Accepts POST Requests")
+
+
+def get_returns(request,id):
+    equity = Equity.objects.filter(equity_id=str(id)).first()
+    print(equity)
+    returns_list = returns.objects.filter(equity=equity)
+    print(returns_list)
+    return HttpResponse("T")
